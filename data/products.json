@@ -11,12 +11,22 @@
   },
   {
     "id": 2,
-    "title": "test",
-    "description": "tetset",
-    "price": 4353453,
+    "title": "LG",
+    "description": "test",
+    "price": "650000",
     "monthly_3": 345345,
     "monthly_6": 34534,
     "monthly_12": 34534,
-    "photo": "AgACAgIAAxkBAAO3aI0lKPwsFptdiGmsOWoHI4M_JXEAAswGMhsGA2hIgdCNlaGvrqgBAAMCAAN5AAM2BA"
+    "photo": "AgACAgIAAxkBAAIBAWiTVE-RT-3z0R1atbIllAUWTwKuAALg8zEbJ_SZSNQUMXceIKEXAQADAgADeQADNgQ"
+  },
+  {
+    "id": 3,
+    "title": "test",
+    "description": "tset",
+    "price": 60000,
+    "monthly_3": 250000,
+    "monthly_6": 65000,
+    "monthly_12": 120000,
+    "photo": "AgACAgIAAxkBAAIBFWiTmPspxa0cehgbHdKc31q_e5iKAAIC9TEbJ_ShSGAqAlBzwOdnAQADAgADeAADNgQ"
   }
 ]

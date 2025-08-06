@@ -22,7 +22,6 @@ async def start_scheduler(bot: Bot):
         product = products[counter % len(products)]
         counter += 1
 
-        # Mahsulot ma'lumotlari
         title = product.get("title", "Nomsiz mahsulot")
         description = product.get("description", "")
         photo = product.get("photo")
@@ -32,7 +31,6 @@ async def start_scheduler(bot: Bot):
         installment_6 = format_price(product.get("installment_6"))
         installment_12 = format_price(product.get("installment_12"))
 
-        # Matnni yig'ish
         text = (
             f"🆔 <b>{product['id']}</b>\n\n"
             f"🛒 <b>{product['title']}</b>\n\n"
@@ -54,4 +52,4 @@ async def start_scheduler(bot: Bot):
         except Exception as e:
             print(f"❌ Post yuborishda xatolik: {e}")
 
-        await asyncio.sleep(3600)  # 1 soat kutish
+        await asyncio.sleep(3600)
