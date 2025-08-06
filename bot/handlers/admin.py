@@ -20,12 +20,14 @@ async def start_handler(message: Message):
 @admin_router.callback_query(F.data == "add")
 async def callback_add_product(callback: CallbackQuery, state: FSMContext):
     await state.set_state(ProductFSM.waiting_for_title)
-    await callback.message.answer("Mahsulot nomini kiriting:", reply_markup=bosh_menu_button())
+    await callback.message.edit_text("Mahsulot nomini kiriting:", reply_markup=bosh_menu_button())
+    await callback.answer()
 
 @admin_router.callback_query(F.data == "view")
 async def callback_view_products(callback: CallbackQuery, state: FSMContext):
     await state.set_state(ProductEditFSM.waiting_for_product_id_or_name)
     await callback.message.answer("Mahsulot nomi yoki ID sini kiriting:", reply_markup=bosh_menu_button())
+    await callback.answer()
 
 
 class ProductFSM(StatesGroup):
@@ -84,6 +86,7 @@ async def delete_product(callback: CallbackQuery):
     updated_products = [p for p in products if p['id'] != product_id]
     save_products(updated_products)
     await callback.message.edit_caption("✅ Mahsulot o‘chirildi.", reply_markup=bosh_menu_button())
+    await callback.answer()
 
 @admin_router.callback_query(F.data.startswith("edit_"))
 async def start_editing(callback: CallbackQuery, state: FSMContext):
@@ -91,12 +94,13 @@ async def start_editing(callback: CallbackQuery, state: FSMContext):
     products = load_products()
     product = next((p for p in products if p['id'] == product_id), None)
     if not product:
-        await callback.answer("Mahsulot topilmadi.")
+        await callback.answer("Mahsulot topilmadi.", show_alert=True)
         return
 
     await state.update_data(product=product, products=products)
     await state.set_state(ProductEditFSM.waiting_for_title)
     await callback.message.answer("Yangi nomini kiriting:", reply_markup=bosh_menu_button())
+    await callback.answer()
 
 @admin_router.message(ProductEditFSM.waiting_for_title)
 async def update_title(message: Message, state: FSMContext):
@@ -228,6 +232,7 @@ async def add_photo(message: Message, state: FSMContext):
 @admin_router.callback_query(F.data == "main_menu")
 async def back_to_main_menu(callback: CallbackQuery):
     await callback.message.answer("🏠 Asosiy menyu:", reply_markup=menu_buttons())
+    await callback.answer()
 
 def bosh_menu_button():
     return InlineKeyboardMarkup(inline_keyboard=[
