@@ -78,9 +78,9 @@ async def start_scheduler(bot: Bot):
         print(f"❌ Post yuborishda xatolik: {e}")
 
     # Keyingi soat boshigacha kutish
-    next_hour = (now + timedelta(hours=1)).replace(minute=0, second=0, microsecond=0)
-    wait_seconds = (next_hour - datetime.now(TASHKENT_TZ)).total_seconds()
-    await asyncio.sleep(wait_seconds)
+    # next_hour = (now + timedelta(hours=1)).replace(minute=0, second=0, microsecond=0)
+    # wait_seconds = (next_hour - datetime.now(TASHKENT_TZ)).total_seconds()
+    # await asyncio.sleep(wait_seconds)
 
         # else:
         #     # 20:00 dan keyin ertasi 08:00 gacha kutadi
