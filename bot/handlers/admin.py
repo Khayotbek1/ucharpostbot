@@ -54,6 +54,9 @@ async def ask_for_product_id_or_name(message: Message, state: FSMContext):
 
 @admin_router.message(ProductEditFSM.waiting_for_product_id_or_name)
 async def show_product_by_id_or_name(message: Message, state: FSMContext):
+    if not message.text:
+        await message.answer("Faqat matn ko'rinishida yuboring!")
+        return
     user_input = message.text.strip()
     products = load_products()
 
