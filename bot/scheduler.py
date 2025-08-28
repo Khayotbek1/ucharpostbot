@@ -43,9 +43,9 @@ async def start_scheduler(bot: Bot):
             photo = product.get("photo")
             price = format_price(product.get("price"))
 
-            installment_3 = format_price(product.get("installment_3"))
-            installment_6 = format_price(product.get("installment_6"))
-            installment_12 = format_price(product.get("installment_12"))
+            installment_3 = format_price(product.get("monthly_3"))
+            installment_6 = format_price(product.get("monthly_6"))
+            installment_12 = format_price(product.get("monthly_12"))
 
             text = (
                 f"🆔 <b>{product['id']}</b>\n\n"
